@@ -1,0 +1,75 @@
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+        <link rel="stylesheet" type="text/css" href="WeatherApp.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+      
+    <link href="https://fonts.googleapis.com/css?family=Coming+Soon|Pangolin" rel="stylesheet">   
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+
+    <title>Radek's Weather App</title>
+  </head>
+  <body>
+    
+    <div class="container" id="weatherBox">
+      <h2 id="intro">'Feeling Good' Weather App</h2>
+      <p id="message">Check the weather in your city and how does it <span style="font-weight:bold">really</span> feel outside.</p>
+      <p id="location"></p>
+
+      <!-- Submit form -->
+      <input type="text" id="myText" placeholder="Enter your city name in EN">
+      <button onclick="myFunction(); getWeatherUrl()" id="cityButton">Submit</button>
+      <!-- <p id ="weatherButton"><button onclick="getWeatherUrl()"> Get the weather</button></p> -->
+      <p id="icon"></p>
+
+      <!-- Sky -->
+      <p id="sky"></p>
+      <p id ="description"></p>
+    
+        <!-- Temperature -->
+        <div id="tempAndButt" class="row">
+            <p class="col-3"></p>
+            <!-- <p class="col-1"></p> -->
+            <p id="temp" class="col-3"></p>        
+            <p><button type="button" class="btn btn-light" id="switchButton" class="col-3" key></button></p>
+            <p class="col-3"></p>
+        </div>
+
+        <!-- Wind -->
+      <div class="row" style="margin-bottom:0px">
+        <p class= "col-3"></p>
+        <p id="windSpeed" class ="col-3"></p>  
+        <p id="windStrenght" class ="col-3"> </p>
+        <p class= "col-3"></p>
+      </div>
+      
+      <!-- Press & Humid -->
+      <div class="row" style="margin-bottom:0px">        
+          <p class= "col-3"></p>
+        <p id="pressure" class= "col-3"></p>
+        <p id="humidity" class= "col-3"></p>
+        <p class= "col-3"></p>
+      </div>
+      <p id="mood"></p>
+        
+    </div>
+
+
+  <p id="impressum">coded & designed by <a target="_blank" href="https://twitter.com/RadoKosiada">Radek</a> <br> powered by <a target="_blank" href="https://openweathermap.org">openweathermap.org</a> </p>
+
+  <!-- https://www.youtube.com/watch?v=Tib9kSjexyA -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+      
+<script type="text/javascript" src="WeatherApp.js"> </script>
+  </body>
+</html>

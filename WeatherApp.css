@@ -1,0 +1,142 @@
+/* font-family: 'Pangolin', cursive;
+font-family: 'Coming Soon', cursive; */
+
+/* https://my-spoiler-alert.com/radek/Group1.png
+https://my-spoiler-alert.com/radek/Sky.png 
+https://my-spoiler-alert.com/radek/Sun4.png */
+
+* {
+ font-family: 'Pangolin', cursive; 
+ /* border: 1px black solid; */
+ 
+}
+
+body {
+  /* background-color: aqua !important; */
+  background: url("https://my-spoiler-alert.com/radek/Sky.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h2{
+  margin-bottom: 5px !important;
+  /* color: rgb(34, 34, 207) !important; */
+}
+#message {
+  margin-top: 0;
+  margin-bottom: 5px !important;
+}
+
+#location {
+  font-size: 1.5em;
+}
+
+#myText {
+  border: 0;
+  border-radius: 6px;
+}
+
+#cityButton {
+  border: 0;
+  border-radius: 6px;
+  color: blue;
+  background-color: white;
+}
+
+#weatherButton {
+  margin-top: 10px;
+}
+#intro {
+  margin-bottom: 20px;
+}
+
+p {
+  margin: 0 !important;
+  /* color: rgb(34, 34, 207) !important; */
+}
+
+.container {
+  /* border: 1px black solid; */
+  /* border-radius: 10px; */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px !important;
+  min-width: 310px;
+  max-width: 700px !important;
+  min-height: 350px;
+  max-height: 850px !important;
+  padding-bottom: 10px;
+  background-color: rgba(256, 256, 256, 0.35);
+  box-shadow: 10px 10px 18px grey;
+  
+}
+
+#description {
+  text-align: center;
+  font-size: 1.5em;
+  text-shadow: 2px 2px yellow;
+  color: blue;
+}
+
+#temp {
+  /* border: 1px blue solid; */
+  text-align: right;
+  align-content: center;
+  min-width: 110px; 
+  padding-top: 9px;
+}
+
+#switchButton {
+ text-align: left;
+ /* border: 1px yellow solid; */
+ padding-left: 10px;
+ background-color: rgba(256, 256, 256, 0.10) !important;
+ border-color:rgba(256, 256, 256, 0.10);
+ color: blue;
+ height: 32px;
+
+}
+
+#tempAndButt {
+  align-content: center;
+  margin-bottom: 0;
+}
+
+#icon {
+  align-content: center;
+  margin-bottom: 5px !important; 
+}
+
+#windSpeed {
+  text-align: right;
+}
+
+#windStrenght {
+  text-align: left;
+}
+
+#pressure {
+  text-align: right;
+}
+
+#humidity {
+  text-align: left;
+}
+
+#mood {
+  font-size: 2em;
+  color: yellow !important;
+  text-shadow: 2px 2px blue;
+}
+
+#impressum {
+  text-align: center;
+}
+
+color of font 
+autofill
+moon icon
