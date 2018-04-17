@@ -5,14 +5,18 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
       
-    <link href="https://fonts.googleapis.com/css?family=Coming+Soon|Pangolin" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css?family=Coming+Soon|Finger+Paint" rel="stylesheet">   
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
    
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <title>Radek's Weather App</title>
   </head>
@@ -20,13 +24,16 @@
     
     <div class="container" id="weatherBox">
       <h2 id="intro">'Feeling Good' Weather App</h2>
-      <p id="message">Check the weather in your city and how does it <span style="font-weight:bold">really</span> feel outside.</p>
+      <p id="message">Check the weather in your city and how it <span style="font-weight:bold">really</span> feels outside.</p>
       <p id="location"></p>
 
-      <!-- Submit form -->
-      <input type="text" id="myText" placeholder="Enter your city name in EN">
+      <!-- Submit form + google autocomplete-->
+      <input type="text" id="myText" class="controls" placeholder="Enter your city name">
       <button onclick="myFunction(); getWeatherUrl()" id="cityButton">Submit</button>
       <!-- <p id ="weatherButton"><button onclick="getWeatherUrl()"> Get the weather</button></p> -->
+      <div id="map"></div>
+      
+      <!-- Weather icon -->
       <p id="icon"></p>
 
       <!-- Sky -->
@@ -35,40 +42,52 @@
     
         <!-- Temperature -->
         <div id="tempAndButt" class="row">
-            <p class="col-3"></p>
+            <p class="col-1"></p>
             <!-- <p class="col-1"></p> -->
-            <p id="temp" class="col-3"></p>        
+            <p id="temp" class="col-5"></p>        
             <p><button type="button" class="btn btn-light" id="switchButton" class="col-3" key></button></p>
             <p class="col-3"></p>
         </div>
 
         <!-- Wind -->
       <div class="row" style="margin-bottom:0px">
-        <p class= "col-3"></p>
-        <p id="windSpeed" class ="col-3"></p>  
-        <p id="windStrenght" class ="col-3"> </p>
-        <p class= "col-3"></p>
+        <p class= "col-2"></p>
+        <p id="windSpeed" class ="col-4"></p>  
+        <p id="windStrenght" class ="col-4"> </p>
+        <p class= "col-2"></p>
       </div>
       
       <!-- Press & Humid -->
       <div class="row" style="margin-bottom:0px">        
-          <p class= "col-3"></p>
-        <p id="pressure" class= "col-3"></p>
-        <p id="humidity" class= "col-3"></p>
-        <p class= "col-3"></p>
+          <p class= "col-2"></p>
+        <p id="pressure" class= "col-4"></p>
+        <p id="humidity" class= "col-4"></p>
+        <p class= "col-2"></p>
       </div>
       <p id="mood"></p>
         
     </div>
 
 
-  <p id="impressum">coded & designed by <a target="_blank" href="https://twitter.com/RadoKosiada">Radek</a> <br> powered by <a target="_blank" href="https://openweathermap.org">openweathermap.org</a> </p>
+  <p id="impressum">coded & designed by <a target="_blank" href="https://twitter.com/RadoKosiada">Radek</a><br>weather data provided by <a target="_blank" href="https://openweathermap.org">openweathermap.org</a><br>autocomplete supported by <a target="_blank" href="https://google.com">google.com</a></p>
 
-  <!-- https://www.youtube.com/watch?v=Tib9kSjexyA -->
+  <!-- Additionasl info about the project -->
 
+  <div class="container" id="readMore" class="row">
+  
+      <div id="moreInfo">Read more ...</div>
+      <div id="additionalInfo"></div>
+      <div id="objectives"></div>
+      <div id="recommends"></div>
+      <div id="addInput"></div>
+   
+  </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+<!-- autocomplete -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABPZwLr425U91uRdnlIJejGH_za1BEm9g&libraries=places&callback=initMap&language=EN" async defer></script>
       
 <script type="text/javascript" src="WeatherApp.js"> </script>
   </body>

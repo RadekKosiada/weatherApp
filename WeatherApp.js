@@ -1,13 +1,11 @@
-// const apiObject = require('./apiKey.js');
-// const weatherKey = apiObject.weatherKey;
+var googleKey = "AIzaSyABPZwLr425U91uRdnlIJejGH_za1BEm9g";
 
-// const {weatherKey} = require("./apiKey.js")
 function loadLocation () {
-    document.querySelector("#location").innerHTML = "<span style='font-weight:bold'>" + appCity + '</span>';
+    // document.querySelector("#location").innerHTML = "<span style='font-weight:bold'>" + appCity + '</span>';
     // document.querySelector("#myText").style = "display: none";
     // document.querySelector("#cityButton").style = "display: none";
     // document.querySelector("#weatherButton").style ="visibility: visible !important";
-    document.querySelector("#switchButton").innerHTML= "switch to °F"
+  
 };
 
 var weatherKey = "68c2f29a956ecd67447dbce69f9b954b";
@@ -29,11 +27,13 @@ document.querySelector("#icon").innerHTML="<img src=" + webIcon + ">";
 // document.querySelector("#icon").innerHTML="<img src='https://my-spoiler-alert.com/radek/Mist3.png'>";
 document.querySelector("#windSpeed").innerHTML= "<span style='font-weight:bold'>Wind:</span> " + appWindSpeed + " m/s";
 document.querySelector("#windStrenght").innerHTML= appWindStrenght;
-document.querySelector("#pressure").innerHTML = "<span style='font-weight:bold'>Press:</span> " + appPressure + " hpa";
+document.querySelector("#pressure").innerHTML = "<span style='font-weight:bold'>Pressure:</span> " + appPressure + " hpa";
 document.querySelector("#humidity").innerHTML= "<span style='font-weight:bold'>Humidity:</span> " + appHumidity + " %";
 // document.querySelector("#sunrise").innerHTML = "Sunrise: " + appSunrise;
 // document.querySelector("#sunset").innerHTML="Sunset: " +appSunset;
 document.querySelector("#mood").innerHTML=appMood;
+document.querySelector("#switchButton").innerHTML= "switch to °F"
+
 };
 
 var appCity;
@@ -54,8 +54,6 @@ var appId;
 var appWindSpeed;
 var appPressure;
 var appHumidity;
-// var appSunrise;
-// var appSunset;
 var appMood;
 
 
@@ -64,13 +62,6 @@ function myFunction() {
     appCity = x;
     loadLocation();
 
-    // var input = document.getElementById("myText");
-    // input.addEventListener("keyup", function(event) {
-    //     event.preventDefault();
-    //     if (event.keyCode === 13) {
-    //         document.getElementById("cityButton").click();
-    //     }
-    // });
 };
  
 var sun = "https://my-spoiler-alert.com/radek/Sun5.png";
@@ -82,6 +73,9 @@ var rain = "https://my-spoiler-alert.com/radek/CloudRaindrop.png";
 var flash ="https://my-spoiler-alert.com/radek/Flash.png";
 var snow = "https://my-spoiler-alert.com/radek/Snow.png";
 var mist = "https://my-spoiler-alert.com/radek/Mist3.png";
+var moon = "https://my-spoiler-alert.com/radek/moon.png";
+var moonCloud = "https://my-spoiler-alert.com/radek/moonCloud.png";
+var moonCloudRain = "https://my-spoiler-alert.com/radek/moonCloudRain.png";
 
 
 function getWeather() {
@@ -97,9 +91,9 @@ function getWeather() {
     appPressure = weatherJson.main.pressure;
     appHumidity =weatherJson.main.humidity;
   
-    if (appIcon == "01d" || appIcon == "01n") {
+    if (appIcon == "01d") {
         webIcon = sun;
-    } else if (appIcon== "02d"||appIcon=="02n" ) {
+    } else if (appIcon== "02d") {
         webIcon = SunCloud;
     } else if (appIcon =="03d" || appIcon=="03n") {
         webIcon = cloud;
@@ -107,7 +101,7 @@ function getWeather() {
         webIcon = darkCloud;
     } else if (appIcon == "09d" ||appIcon=="09n") {
         webIcon = rain;
-    } else if (appIcon == "10d" ||appIcon=="10n") {
+    } else if (appIcon == "10d") {
         webIcon = SunCloudRain;
     } else if (appIcon == "11d" ||appIcon=="11n") {
         webIcon = flash;
@@ -115,6 +109,12 @@ function getWeather() {
         webIcon = snown;
     } else if (appIcon == "50d" ||appIcon=="50n") {
         webIcon = mist;
+    } else if (appIcon == "01n") {
+        webIcon = moon;
+    } else if (appIcon == "02n") {
+        webIcon = moonCloud;
+    } else if (appIcon =="10n") {
+        webIcon = moonCloudRain;
     }
 
     // additional comment regarding the wind strenght
@@ -139,9 +139,11 @@ function getWeather() {
     // addtional info regarding the termal comfort
     if (appHumidity < 20) {
         appMood = "<span style='color:red'>Warning: dry air!</span>";
-    } else if (appHumidity >=20 && appHumidity < 60 && appTemp > 15 && appTemp< 25 && appSkyDescription == "clear sky" || appSkyDescription == "few clouds" && appWindStrenght < 13.8) {
-        appMood = "It feels great outside!";
-    } else if (appHumidity >=20 && appHumidity < 60 && appTemp > 5 && appTemp< 15 && appSkyDescription == "clear sky" || appSkyDescription == "few clouds" && appWindStrenght < 13.8) {
+    // } else if (appHumidity >=20 && appHumidity < 60 && appTemp > 15 && appTemp < 25 && appSkyDescription == "clear sky" && appWindStrenght < 13.8) {
+    //     appMood = "It feels nice outside!";
+    // } else if (appHumidity >=20 && appHumidity < 60 && appTemp >= 25 && appWindStrenght < 13.8 && appSkyDescription == "clear sky") {
+    //     appMood = "It feels great outside!";   
+    } else if (appHumidity >=20 && appHumidity < 60 && appTemp > 5 && appTemp <= 15 && appSkyDescription == "clear sky" && appWindStrenght < 13.8) {
         appMood = "It's a bit chilly, but the air feels good!";   
     } else if (appTemp > 5 && appTemp< 15 && appWindStrenght > 24.4) {
         appMood = "<span style='color:red'>Warning: it's chilly and windy. The real feel temperature might be lower.</span>";
@@ -151,14 +153,12 @@ function getWeather() {
         appMood = "Chilly and humid. Lower termal comfort.";        
     } else if (appTemp > 25 && appHumidity > 60) {
         appMood = "<span style='color:red'>Heat warning; possible tiredness and problems with concetration.</span>"
-    }else if (appTemp < 25 && appTemp > 20 && appHumidity > 60) {
+    }else if (appTemp <= 25 && appTemp > 20 && appHumidity > 60) {
         appMood = "It's warm and humid; lower termal comfort."
     }else if (appTemp < 5 && appHumidity <60 && appSkyDescription == "few clouds") {
         appMood = "It's cold and a bit cloudy, but the sun should be there in a second!"
     } else if (appTemp < 5 && appHumidity <60 && appSkyDescription == "clear sky") {
         appMood = "It's cold, but the sun should feel nice!";
-    }else if (appTemp < 25 && appTemp > 20 && appHumidity > 60) {
-        appMood = "It's warm and humid; lower termal comfort.";
     }else if (appSkyDescription == "scattered clouds" || appSkyDescription == "broken clouds") {
             appMood = "It's cloudy outside.";
     }else if (appSkyDescription == "shower rain" || appSkyDescription == "rain") {
@@ -169,11 +169,16 @@ function getWeather() {
             appMood = "Snow!";
     } else if (appSkyDescription == "mist") {
             appMood ="It's misty. Your visibility might be limited.";
-    }else {
+    } else if(appSkyDescription =="clear sky" && appTemp <25 && appTemp >15 && appHumidity > 20 && appHumidity < 65 && appWindSpeed < 13.8) {
+            appMood = "It feels nice outside!";
+    } else if (appSkyDescription =="clear sky" && appTemp >= 25 && appHumidity > 20 && appHumidity < 65 && appWindSpeed < 13.8) {
+        appMood = "It feels great outside!";
+    } else {
         appMood = "";
     }
 
-    loadWeather();    
+    loadWeather();  
+     
     
     // Switching °C to °F Math.round(value * 100) / 100
     var clickControl =true;    
@@ -201,3 +206,84 @@ document.querySelector("#switchButton").addEventListener("click", getFahrenheit)
 })
 
 };
+
+var addInfo = '<div>A project made as a part of the <a target="_blank" href="https://www.freecodecamp.org/challenges/show-the-local-weather">freeCodeCamp</a> curriculum. </div>'
+
+var objectives = '<h5>Objectives:</h5>\
+            <li>Use Javascript or jQuery;</li>\
+            <li>Use an API to get the current weather conditions in my current location;</li>\
+            <li>Use my own personal graphics style;</li>\
+            <li>Show different icon or background image depending on the weather;</li>\
+            <li>Add a button to toggle between Fahrenheit and Celsius.</li>'
+
+var recommends = '<h5>Recommendation from fCC:</h5>\
+            <li>Use HTML5 Geolocation;</li>\
+            <li>Use freeCodeCamp <a target="_blank" href="https://fcc-weather-api.glitch.me">Weather API.</a></li>'
+
+var addInput = '<h5>My additional input:</h5>\
+            <li>Another weather API due to issues with fCC API;</li>\
+            <li>Submit form - to extend search options beyond user\'s current location;</li>\
+            <li>Google autocomplete - to simplify entering location and avoid typos;</li>\
+            <li>Wind strength based on the <a target="_blank"  href="https://en.wikipedia.org/wiki/Beaufort_scale">Beaufort scale;</a></li>\
+            <li>Additional message at the bottom for <span style="font-weight: bold">most</span> of the weather conditions;</li>\
+            <li>The background and all icons have been designed and drawn by myself.</li>'
+            
+ var marginLeft = "margin-left: 20%";         
+
+var lessInfo = false;
+function readMore () {
+    if(lessInfo) {
+        document.querySelector("#moreInfo").innerHTML="Read more ...";        
+        document.querySelector("#additionalInfo").innerHTML = "";
+        document.querySelector("#objectives").innerHTML= "";
+        document.querySelector("#recommends").innerHTML="";
+        document.querySelector("#addInput").innerHTML ="";
+        lessInfo= !lessInfo;
+    } else {
+        document.querySelector("#moreInfo").innerHTML="Read less";
+        document.querySelector("#additionalInfo").innerHTML = addInfo;
+        document.querySelector("#additionalInfo").style =marginLeft;
+        document.querySelector("#objectives").innerHTML= objectives;
+        document.querySelector("#objectives").style =marginLeft;
+        document.querySelector("#recommends").innerHTML=recommends;
+        document.querySelector("#recommends").style =marginLeft;
+        document.querySelector("#addInput").innerHTML =addInput;
+        document.querySelector("#addInput").style =marginLeft;
+        lessInfo= !lessInfo;
+    }
+};
+
+document.querySelector("#moreInfo").addEventListener("click", readMore);
+
+// Google Place Autocomplete
+
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -33.8688, lng: 151.2195},
+      zoom: 13
+    });
+    var input = /** @type {!HTMLInputElement} */(
+        document.getElementById('myText'));
+
+    var types = document.getElementById('type-selector');
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo('bounds', map);
+
+    var infowindow = new google.maps.InfoWindow();
+    var marker = new google.maps.Marker({
+      map: map,
+      anchorPoint: new google.maps.Point(0, -29)
+    });
+
+    autocomplete.addListener('place_changed', function() {
+      infowindow.close();
+      marker.setVisible(false);
+      var place = autocomplete.getPlace();
+
+
+    });
+
+  }
