@@ -6,7 +6,7 @@
 
 body {
   /* background-color: aqua !important; */
-  background: url("https://my-spoiler-alert.com/radek/Sky.png") no-repeat center center fixed; 
+  background: url("./icons/Sky.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -16,7 +16,7 @@ body {
 h2{
   margin-bottom: 7px !important;
   margin-top: 5px !important;
-  color: rgb(34, 34, 207) !important; */
+  color: rgb(34, 34, 207) !important;
 }
 #message {
   margin-top: 0;
@@ -82,7 +82,7 @@ p {
   /* border: 1px blue solid; */
   text-align: right;
   align-content: center;
-  min-width: 110px; 
+  min-width: 110px;
   padding-top: 9px;
 }
 
@@ -104,7 +104,7 @@ p {
 
 #icon {
   align-content: center;
-  margin-bottom: 5px !important; 
+  margin-bottom: 5px !important;
   margin-top: 10px !important;
 }
 
@@ -139,13 +139,13 @@ p {
   text-align: center;
 }
 
-#moreInfo {  
+#moreInfo {
   text-align: center;
   color: rgb(42, 146, 212);
   cursor: pointer;
   margin-bottom: 5px;
   margin-top: 5px;
-  
+
 }
 
 h5 {

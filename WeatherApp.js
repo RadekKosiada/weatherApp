@@ -5,7 +5,7 @@ function loadLocation () {
     // document.querySelector("#myText").style = "display: none";
     // document.querySelector("#cityButton").style = "display: none";
     // document.querySelector("#weatherButton").style ="visibility: visible !important";
-  
+
 };
 
 var weatherKey = "68c2f29a956ecd67447dbce69f9b954b";
@@ -24,7 +24,6 @@ document.querySelector("#temp").innerHTML= "<span style='font-weight:bold'>Temp:
 // document.querySelector("#sky").innerHTML = appSky;
 document.querySelector("#description").innerHTML =appSkyDescription;
 document.querySelector("#icon").innerHTML="<img src=" + webIcon + ">";
-// document.querySelector("#icon").innerHTML="<img src='https://my-spoiler-alert.com/radek/Mist3.png'>";
 document.querySelector("#windSpeed").innerHTML= "<span style='font-weight:bold'>Wind:</span> " + appWindSpeed + " m/s";
 document.querySelector("#windStrenght").innerHTML= appWindStrenght;
 document.querySelector("#pressure").innerHTML = "<span style='font-weight:bold'>Pressure:</span> " + appPressure + " hpa";
@@ -56,33 +55,34 @@ var appPressure;
 var appHumidity;
 var appMood;
 
-
+// getting the city from the input and declaring it as var appCity that is part of the url, needed for ajax call from openweathermap.org.
 function myFunction() {
     var x = document.getElementById("myText").value;
     appCity = x;
     loadLocation();
 
-};
- 
-var sun = "https://my-spoiler-alert.com/radek/Sun5.png";
-var SunCloud = "https://my-spoiler-alert.com/radek/SunCloud2.png";
-var cloud = "https://my-spoiler-alert.com/radek/Cloud.png";
-var SunCloudRain = "https://my-spoiler-alert.com/radek/SunCloudRain2.png";
-var darkCloud = "https://my-spoiler-alert.com/radek/DarkCloud.png";
-var rain = "https://my-spoiler-alert.com/radek/CloudRaindrop.png";
-var flash ="https://my-spoiler-alert.com/radek/Flash.png";
-var snow = "https://my-spoiler-alert.com/radek/Snow.png";
-var mist = "https://my-spoiler-alert.com/radek/Mist3.png";
-var moon = "https://my-spoiler-alert.com/radek/moon.png";
-var moonCloud = "https://my-spoiler-alert.com/radek/moonCloud.png";
-var moonCloudRain = "https://my-spoiler-alert.com/radek/moonCloudRain.png";
+}
+
+//  weather icons
+var sun = "./icons/final/Sun5.png";
+var SunCloud = "./icons/final/SunCloud2.png";
+var cloud = "./icons/Cloud.png";
+var SunCloudRain = "./icons/final/SunCloudRain2.png";
+var darkCloud = "./icons/final/DarkCloud.png";
+var rain = "./icons/final/CloudRaindrop.png";
+var flash ="./icons/final/Flash.png";
+var snow = "./icons/final/Snow.png";
+var mist = "./icons/final/Mist3.png";
+var moon = "./icons/final/moon.png";
+var moonCloud = "./icons/final/moonCloud.png";
+var moonCloudRain = "./icons/final/moonCloudRain.png";
 
 
 function getWeather() {
   $.ajax({
   url: weatherUrl,
   type: 'GET',
-  success: function(weatherJson){    
+  success: function(weatherJson){
     appTemp  = weatherJson.main.temp;
     appSky = weatherJson.weather[0].main;
     appSkyDescription = weatherJson.weather[0].description;
@@ -90,7 +90,8 @@ function getWeather() {
     appWindSpeed = weatherJson.wind.speed;
     appPressure = weatherJson.main.pressure;
     appHumidity =weatherJson.main.humidity;
-  
+
+//   changing of the weather icon
     if (appIcon == "01d") {
         webIcon = sun;
     } else if (appIcon== "02d") {
@@ -142,15 +143,15 @@ function getWeather() {
     // } else if (appHumidity >=20 && appHumidity < 60 && appTemp > 15 && appTemp < 25 && appSkyDescription == "clear sky" && appWindStrenght < 13.8) {
     //     appMood = "It feels nice outside!";
     // } else if (appHumidity >=20 && appHumidity < 60 && appTemp >= 25 && appWindStrenght < 13.8 && appSkyDescription == "clear sky") {
-    //     appMood = "It feels great outside!";   
+    //     appMood = "It feels great outside!";
     } else if (appHumidity >=20 && appHumidity < 60 && appTemp > 5 && appTemp <= 15 && appSkyDescription == "clear sky" && appWindStrenght < 13.8) {
-        appMood = "It's a bit chilly, but the air feels good!";   
+        appMood = "It's a bit chilly, but the air feels good!";
     } else if (appTemp > 5 && appTemp< 15 && appWindStrenght > 24.4) {
         appMood = "<span style='color:red'>Warning: it's chilly and windy. The real feel temperature might be lower.</span>";
     } else if (appTemp < 5 && appHumidity > 60) {
         appMood = "<span style='color:red'>Warning: cold and humid! The real feel temperature will be even lower!</span>";
     } else if (appTemp >5 && appTemp < 15 && appHumidity > 60) {
-        appMood = "Chilly and humid. Lower termal comfort.";        
+        appMood = "Chilly and humid. Lower termal comfort.";
     } else if (appTemp > 25 && appHumidity > 60) {
         appMood = "<span style='color:red'>Heat warning; possible tiredness and problems with concetration.</span>"
     }else if (appTemp <= 25 && appTemp > 20 && appHumidity > 60) {
@@ -177,11 +178,11 @@ function getWeather() {
         appMood = "";
     }
 
-    loadWeather();  
-     
-    
+    loadWeather();
+
+
     // Switching °C to °F Math.round(value * 100) / 100
-    var clickControl =true;    
+    var clickControl =true;
     function getFahrenheit(){
         if (clickControl) {
         document.querySelector("#temp").innerHTML= "<span style='font-weight:bold'>Temp:</span> " + Math.round((appTemp * 9/5 +32)* 100) / 100 + "°F";
@@ -193,20 +194,21 @@ function getWeather() {
         clickControl = !clickControl;
         }
     };
-   
+
 document.querySelector("#switchButton").addEventListener("click", getFahrenheit);
-  
+
   },
   error: function (err2) {
       console.log("Second ajax request failed, error = " + err2);
     if(confirm("Are you sure that's the correct name of city? Please try again.")){
-    window.location.reload();  
+    window.location.reload();
     }
   }
 })
 
 };
 
+// Read more part
 var addInfo = '<div>A project made as a part of the <a target="_blank" href="https://www.freecodecamp.org/challenges/show-the-local-weather">freeCodeCamp</a> curriculum. </div>'
 
 var objectives = '<h5>Objectives:</h5>\
@@ -227,13 +229,13 @@ var addInput = '<h5>My additional input:</h5>\
             <li>Wind strength based on the <a target="_blank"  href="https://en.wikipedia.org/wiki/Beaufort_scale">Beaufort scale;</a></li>\
             <li>Additional message at the bottom for <span style="font-weight: bold">most</span> of the weather conditions;</li>\
             <li>The background and all icons have been designed and drawn by myself.</li>'
-            
- var marginLeft = "margin-left: 20%";         
+
+ var marginLeft = "margin-left: 20%";
 
 var lessInfo = false;
 function readMore () {
     if(lessInfo) {
-        document.querySelector("#moreInfo").innerHTML="Read more ...";        
+        document.querySelector("#moreInfo").innerHTML="Read more ...";
         document.querySelector("#additionalInfo").innerHTML = "";
         document.querySelector("#objectives").innerHTML= "";
         document.querySelector("#recommends").innerHTML="";
