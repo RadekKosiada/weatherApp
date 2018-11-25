@@ -64,18 +64,18 @@ function myFunction() {
 }
 
 //  weather icons
-var sun = "./icons/final/Sun5.png";
-var SunCloud = "./icons/final/SunCloud2.png";
+var sun = "./icons/Sun5.png";
+var SunCloud = "./icons/SunCloud2.png";
 var cloud = "./icons/Cloud.png";
-var SunCloudRain = "./icons/final/SunCloudRain2.png";
-var darkCloud = "./icons/final/DarkCloud.png";
-var rain = "./icons/final/CloudRaindrop.png";
-var flash ="./icons/final/Flash.png";
-var snow = "./icons/final/Snow.png";
-var mist = "./icons/final/Mist3.png";
-var moon = "./icons/final/moon.png";
-var moonCloud = "./icons/final/moonCloud.png";
-var moonCloudRain = "./icons/final/moonCloudRain.png";
+var SunCloudRain = "./icons/SunCloudRain2.png";
+var darkCloud = "./icons/DarkCloud.png";
+var rain = "./icons/CloudRaindrop.png";
+var flash ="./icons/Flash.png";
+var snow = "./icons/Snow.png";
+var mist = "./icons/Mist3.png";
+var moon = "./icons/moon.png";
+var moonCloud = "./icons/moonCloud.png";
+var moonCloudRain = "./icons/moonCloudRain.png";
 
 
 function getWeather() {
